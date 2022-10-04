@@ -9,6 +9,11 @@
 [commit messageの書き方](https://qiita.com/itosho/items/9565c6ad2ffc24c09364)<-これのライト版くらい書いてりゃok
 
 
+## 各種バージョン
+|ライブラリ等|バージョン|
+|----|----|
+|unity|2021.3.11.f1|
+
 ## TODO
 
 - [ ] all in oneなDocker imageの作成
