@@ -8,6 +8,15 @@
 [githubでのチーム開発](https://qiita.com/siida36/items/880d92559af9bd245c34)<br>
 [commit messageの書き方](https://qiita.com/itosho/items/9565c6ad2ffc24c09364)<-これのライト版くらい書いてりゃok
 
+## 開発ルール
+
+### unity上
+- 自分の作ったobject以外は触らない．(コードのアタッチも含め)
+    - 自分用のシーンを作ると良いかも
+
+### codingルール
+
+
 
 ## 各種バージョン
 |ライブラリ等|バージョン|
