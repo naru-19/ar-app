@@ -1,0 +1,4 @@
+{
+    "omnisharp.useGlobalMono": "never",
+    "omnisharp.monoPath": "/Library/Frameworks/Mono.framework/Versions/Current"
+}
