@@ -393,7 +393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Opacity
+  m_text: alpha
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 1017465439}
   - component: {fileID: 1017465438}
   m_Layer: 0
-  m_Name: OpacityManager
+  m_Name: AlphaManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_material: {fileID: 2100000, guid: 0e39a609cf5394a1fb862b78d9fb5387, type: 2}
-  opacitySlider: {fileID: 2053130540}
+  alphaSlider: {fileID: 0}
 --- !u!4 &1017465439
 Transform:
   m_ObjectHideFlags: 0
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_material: {fileID: 0}
-  opacitySlider: {fileID: 0}
+  alphaSlider: {fileID: 0}
 --- !u!1001 &955461027694055776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1318,11 +1318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836205957760557577, guid: 85a2f5ca7cf6347c3a4a5ccb6f459cc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 236.62459
+      value: 412
       objectReference: {fileID: 0}
     - target: {fileID: 6836205957760557577, guid: 85a2f5ca7cf6347c3a4a5ccb6f459cc4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.84476876
+      value: -328.6
       objectReference: {fileID: 0}
     - target: {fileID: 6836205957760557577, guid: 85a2f5ca7cf6347c3a4a5ccb6f459cc4, type: 3}
       propertyPath: m_LocalRotation.w

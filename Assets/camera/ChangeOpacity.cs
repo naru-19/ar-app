@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ChangeOpacity : MonoBehaviour
 {
     public Material target_material;
-    public Slider opacitySlider;
+    public Slider alphaSlider;
     private float alpha;
 
     // Start is called before the first frame update
@@ -21,8 +21,7 @@ public class ChangeOpacity : MonoBehaviour
     }
     public void Change()
     {
-        var color = new Color(1, 1, 1, 1 - opacitySlider.value);
+        var color = new Color(1, 1, 1, alphaSlider.value);
         target_material.SetColor("_Color", color);
-        Debug.Log($"Now opacity is {1 - opacitySlider.value}");
     }
 }
