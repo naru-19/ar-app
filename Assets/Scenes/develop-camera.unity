@@ -531,6 +531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017465439}
   - component: {fileID: 1017465438}
+  - component: {fileID: 1017465440}
   m_Layer: 0
   m_Name: AlphaManager
   m_TagString: Untagged
@@ -545,13 +546,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017465437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f9aed7b53dc84c2782aedb8cc6a7b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target_material: {fileID: 2100000, guid: 0e39a609cf5394a1fb862b78d9fb5387, type: 2}
-  alphaSlider: {fileID: 0}
+  alphaSlider: {fileID: 2053130540}
+  alpha: 0
 --- !u!4 &1017465439
 Transform:
   m_ObjectHideFlags: 0
@@ -567,6 +569,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1017465440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017465437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20295197cfd7348c6824f4e6803e0d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target_material: {fileID: 2100000, guid: 0e39a609cf5394a1fb862b78d9fb5387, type: 2}
+  alphaSlider: {fileID: 2053130540}
 --- !u!1 &1128422195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2053130539}
   - component: {fileID: 2053130540}
-  - component: {fileID: 2053130541}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1267,8 +1282,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1017465438}
-        m_TargetAssemblyTypeName: ChangeOpacity, Assembly-CSharp
+      - m_Target: {fileID: 1017465440}
+        m_TargetAssemblyTypeName: ChangeAlpha, Assembly-CSharp
         m_MethodName: Change
         m_Mode: 1
         m_Arguments:
@@ -1279,20 +1294,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2053130541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053130538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f9aed7b53dc84c2782aedb8cc6a7b64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target_material: {fileID: 0}
-  alphaSlider: {fileID: 0}
 --- !u!1001 &955461027694055776
 PrefabInstance:
   m_ObjectHideFlags: 0

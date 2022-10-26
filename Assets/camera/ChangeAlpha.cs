@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ChangeOpacity : MonoBehaviour
+public class ChangeAlpha : MonoBehaviour
 {
     public Material target_material;
     public Slider alphaSlider;
