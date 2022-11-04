@@ -22,12 +22,11 @@
 
 コードフォーマットは Omnisharp を使う.
 
-| 変数例          | 意味                         |
-| --------------- | ---------------------------- |
-| CameraSwitcher  | class を表す                 |
-| camera_state    | 普通の変数だけど，長いやつ． |
-| GLOVAL_VARIABLE | グローバル変数は全部大文字   |
-| isCamera        | bool 値                      |
+| 変数例              | 意味                           |
+| ------------------- | ------------------------------ |
+| CameraSwitcher      | class を表す                   |
+| cameraState         | 普通の変数だけど，長いやつ．   |
+| ~~GLOVAL_VARIABLE~~ | ~~グローバル変数は全部大文字~~ |
 
 ## 各種バージョン
 
@@ -37,7 +36,7 @@
 
 ## TODO
 
-- [ ] all in one な Docker image の作成
-  - [ ] python のバージョン
-  - [ ] ライブラリのバージョン(特に open3D,formatter は version で挙動が違う)
-- [ ] unity install (全員?)
+- [ ] ~~all in one な Docker image の作成~~
+  - [ ] ~~python のバージョン~~python 使わないため
+  - [ ] ~~ライブラリのバージョン(特に open3D,formatter は version で挙動が違う)~~
+- [ ] unity install
