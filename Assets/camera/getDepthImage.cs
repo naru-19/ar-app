@@ -84,15 +84,5 @@ public class getDepthImage : MonoBehaviour
         // "Apply" the new pixel data to the Texture2D.
         texture.Apply();
 
-        // Get the aspect ratio for the current texture.
-        // var textureAspectRatio = (float)texture.width / texture.height;
-
-        // // Determine the raw image rectSize preserving the texture aspect ratio, matching the screen orientation,
-        // // and keeping a minimum dimension size.
-        // const float minDimension = 480.0f;
-        // var maxDimension = Mathf.Round(minDimension * textureAspectRatio);
-        // var rectSize = new Vector2(maxDimension, minDimension);
-        // //var rectSize = new Vector2(minDimension, maxDimension);   //Portrait
-        // rawImage.rectTransform.sizeDelta = rectSize;
     }
 }
