@@ -532,7 +532,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 124.62449, w: 20.460737}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1346,11 +1346,11 @@ RectTransform:
   m_Father: {fileID: 1128422199}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 286, y: -286}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -14, y: 40}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1336566839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1927,7 +1927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e31fbf3024341a3b50878b2471b5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1305000564}
 --- !u!1 &2053130538
 GameObject:
   m_ObjectHideFlags: 0
