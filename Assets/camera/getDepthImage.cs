@@ -4,20 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-public class getDepthImage : MonoBehaviour
+/*
+引用元: https://github.com/andijakl/arfoundation-depth/blob/main/Assets/Scripts/DepthImageVisualizer.cs
+*/
+public class GetDepthImage : MonoBehaviour
 {
-
-    public ARCameraManager CameraManager
-    {
-        get => _cameraManager;
-        set => _cameraManager = value;
-    }
-
-    [SerializeField]
-    [Tooltip("The ARCameraManager which will produce camera frame events.")]
-    private ARCameraManager _cameraManager;
-
-
     public AROcclusionManager OcclusionManager
     {
         get => _occlusionManager;
@@ -25,7 +16,6 @@ public class getDepthImage : MonoBehaviour
     }
 
     [SerializeField]
-    [Tooltip("The AROcclusionManager which will produce depth textures.")]
     private AROcclusionManager _occlusionManager;
 
     public RawImage RawImage
@@ -35,8 +25,7 @@ public class getDepthImage : MonoBehaviour
     }
 
     [SerializeField]
-    [Tooltip("The UI RawImage used to display the image on screen.")]
-    private RawImage _rawImage;
+    private RawImage _rawImage; // display depth image
 
 
     void Update()
@@ -83,6 +72,7 @@ public class getDepthImage : MonoBehaviour
 
         // "Apply" the new pixel data to the Texture2D.
         texture.Apply();
-
+        Color[] pixels = texture.GetPixels();
+        Debug.Log($"{pixels.Length}x{pixels[0]}");
     }
 }
