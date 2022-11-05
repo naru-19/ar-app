@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-/*
-引用元: https://github.com/andijakl/arfoundation-depth/blob/main/Assets/Scripts/DepthImageVisualizer.cs
-*/
-public class GetDepthImage : MonoBehaviour
+
+public class RenderDepthImage : MonoBehaviour
 {
     public AROcclusionManager OcclusionManager
     {
