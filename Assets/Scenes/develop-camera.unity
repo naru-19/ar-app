@@ -658,6 +658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 903296603}
   - component: {fileID: 903296604}
+  - component: {fileID: 903296605}
   m_Layer: 0
   m_Name: SubScreenManager
   m_TagString: Untagged
@@ -695,6 +696,18 @@ MonoBehaviour:
   subScreen: {fileID: 1782512610}
   sizeSlider: {fileID: 1489278636}
   rotateScreen: 1
+--- !u!114 &903296605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903296602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8ff52f14fb749a0ba2ca645fbed03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1017465437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,8 +1151,8 @@ GameObject:
   - component: {fileID: 1305000565}
   - component: {fileID: 1305000570}
   - component: {fileID: 1305000572}
-  - component: {fileID: 1305000571}
   - component: {fileID: 1305000573}
+  - component: {fileID: 1305000571}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -1281,7 +1294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ea42175e3d74512923a87961b04f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraManager: {fileID: 1305000566}
   _occlusionManager: {fileID: 1305000573}
   _rawImage: {fileID: 1782512610}
 --- !u!114 &1305000572

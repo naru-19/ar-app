@@ -64,8 +64,12 @@ public class GetDepthImage : MonoBehaviour
         var rawTextureData = texture.GetRawTextureData<byte>();
 
         // Make sure the destination buffer is large enough to hold the converted data (they should be the same size)
-        Debug.Assert(rawTextureData.Length == cpuImage.GetConvertedDataSize(conversionParams.outputDimensions, conversionParams.outputFormat),
-            "The Texture2D is not the same size as the converted data.");
+        Debug.Assert(
+            rawTextureData.Length == cpuImage.GetConvertedDataSize(
+                conversionParams.outputDimensions, conversionParams.outputFormat
+            ),
+            "The Texture2D is not the same size as the converted data."
+        );
 
         // Perform the conversion.
         cpuImage.Convert(conversionParams, rawTextureData);
@@ -73,6 +77,6 @@ public class GetDepthImage : MonoBehaviour
         // "Apply" the new pixel data to the Texture2D.
         texture.Apply();
         Color[] pixels = texture.GetPixels();
-        Debug.Log($"{pixels.Length}x{pixels[0]}");
+        // Debug.Log($"{pixels.Length}x{pixels[0]}");
     }
 }
