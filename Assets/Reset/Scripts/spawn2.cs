@@ -6,9 +6,8 @@ using UnityEngine.XR.ARSubsystems;
 
 public class spawn2 : MonoBehaviour
 {
-    [SerializeField]
-    GameObject objectPrefab;
-
+    [SerializeField] GameObject objectPrefab;
+    [SerializeField] private Camera arCamera;
     public TrackableType type;
 
     ARRaycastManager raycastManager;
@@ -27,9 +26,24 @@ public class spawn2 : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
+            var ray = arCamera.ScreenPointToRay(touch.position);
+
             if (raycastManager.Raycast(touch.position, hitResults, TrackableType.PlaneWithinBounds))
             {
                 Instantiate(objectPrefab, hitResults[0].pose.position, Quaternion.identity);
+            }
+
+            // houseをタップした場合は削除する
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(ray, out hit);
+            if (hasHit)
+            {
+                var target = hit.collider.gameObject;
+                if (target.name.Contains("house"))
+                {
+                    Destroy(target);
+                    return;
+                }
             }
         }
     }
