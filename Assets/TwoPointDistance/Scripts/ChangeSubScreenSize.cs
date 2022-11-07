@@ -8,7 +8,7 @@ public class ChangeSubScreenSize : MonoBehaviour
 
     [SerializeField] RawImage subScreen;
     [SerializeField] Slider sizeSlider;
-    [SerializeField] bool rotateScreen;
+    public bool rotateScreen;
     private float screenHeight; // main screen height
     private float screenWidth; // main screen width
 
