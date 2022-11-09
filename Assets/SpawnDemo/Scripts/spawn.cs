@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,30 +7,46 @@ using UnityEngine.XR.ARSubsystems;
 
 public class spawn : MonoBehaviour
 {
-    [SerializeField]
+    ARRaycastManager raycastManager;
+    BundleWebLoader loader;
+
     GameObject objectPrefab;
 
-    public TrackableType type;
+    public delegate void Callback(Action<GameObject> gameObject);
 
-    ARRaycastManager raycastManager;
-    List<ARRaycastHit> hitResults = new List<ARRaycastHit>();
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         raycastManager = GetComponent<ARRaycastManager>();
     }
 
+    public TrackableType type;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        loader = new BundleWebLoader();
+
+        StartCoroutine(loader.GetBundle((GameObject obj) => {
+            objectPrefab = obj;
+        }));
+    }
+
     // Update is called once per frame
     void Update()
-    {
-        if (Input.touchCount > 0)
+    {   
+        if (Input.touchCount == 0 || Input.GetTouch(0).phase != TouchPhase.Ended)
         {
-            Touch touch = Input.GetTouch(0);
+            return;
+        }
 
-            if (raycastManager.Raycast(touch.position, hitResults, TrackableType.PlaneWithinBounds))
+        var hits = new List<ARRaycastHit>();
+        if (raycastManager.Raycast(Input.GetTouch(0).position, hits, TrackableType.PlaneWithinPolygon))
+        {
+            var hitPose = hits[0].pose;
+            // ダウンロードに成功していればインスタンス化
+            if(objectPrefab != null)
             {
-                Instantiate(objectPrefab, hitResults[0].pose.position, Quaternion.identity);
+                Instantiate(objectPrefab, hitPose.position, hitPose.rotation);
             }
         }
     }
