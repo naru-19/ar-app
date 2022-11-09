@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/develop-camera-spawn.unity
     guid: ef77b7cf5a5af419087a6e5c40113d21
+  - enabled: 1
+    path: Assets/Scenes/develop-reset.unity
+    guid: 52748f9d539ec434ca9a2668b3ea3e51
   m_configObjects:
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: eb8789a26a4a44e1abe35db959547bd4, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e7a469aa3671f425ebcb3aac245334fc, type: 2}
