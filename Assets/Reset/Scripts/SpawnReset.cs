@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -26,16 +27,22 @@ public class SpawnReset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 0 || Input.GetTouch(0).phase != TouchPhase.Ended)
         {
-            Touch touch = Input.GetTouch(0);
+            return;
+        }
+        Touch touch = Input.GetTouch(0);
 
-            if (raycastManager.Raycast(touch.position, hitResults, TrackableType.PlaneWithinBounds))
+        if (raycastManager.Raycast(touch.position, hitResults, TrackableType.PlaneWithinBounds))
+        {
+            if (EventSystem.current.currentSelectedGameObject != null)
             {
-                GameObject furniture = Instantiate(objectPrefab, hitResults[0].pose.position, Quaternion.identity);
-                furniture.name = furnitureName + furnitureNum.ToString("00000");
-                furnitureNum++;
+                return;
             }
+
+            GameObject furniture = Instantiate(objectPrefab, hitResults[0].pose.position, Quaternion.identity);
+            furniture.name = furnitureName + furnitureNum.ToString("00000");
+            furnitureNum++;
         }
     }
 
