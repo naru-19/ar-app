@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1696268219
+CRC: 490659973
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2dee3c57794c0d916a899bdafda2b721
+    Hash: f2809876c4126decbdd5e9bc6e6eb136
   TypeTreeHash:
     serializedVersion: 2
     Hash: 473bd2dce4419c6b946995c88b6d6dd0
@@ -25,5 +25,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/SpawnDemo/Prefabs/Rabbit/rabbitPrefab.prefab
 - Assets/SpawnDemo/Prefabs/house/house_v4_Prefab.prefab
 Dependencies: []
