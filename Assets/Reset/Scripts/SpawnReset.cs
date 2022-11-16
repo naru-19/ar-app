@@ -53,16 +53,19 @@ public class SpawnReset : MonoBehaviour
         Touch touch = Input.GetTouch(0);
         var ray = arCamera.ScreenPointToRay(touch.position);
 
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            FeaturedObject = hit.collider.gameObject;
-            // ResizeObject(target);
-            resizePanel.SetActive(true);
-            return;
-        }
+        // RaycastHit hit;
+        // if (Physics.Raycast(ray, out hit))
+        // {
+        //     Debug.Log("-----------------------------Enter--------------------------");
+        //     FeaturedObject = hit.collider.gameObject;
+        //     Debug.Log("--------------FeaturedObject----------------");
+        //     Debug.Log(FeaturedObject.name);
+        //     Debug.Log("--------------FeaturedObject----------------");
+        //     resizePanel.SetActive(true);
+        //     return;
+        // }
 
-        if (raycastManager.Raycast(ray, hitResults, TrackableType.PlaneWithinBounds))
+        if (raycastManager.Raycast(touch.position, hitResults, TrackableType.PlaneWithinBounds))
         {
             if (EventSystem.current.currentSelectedGameObject != null)
             {

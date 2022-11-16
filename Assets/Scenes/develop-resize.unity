@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18025592, g: 0.22567038, b: 0.3068796, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -795,7 +795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -500}
+  m_AnchoredPosition: {x: 15, y: -405}
   m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037124649
@@ -929,6 +929,7 @@ MonoBehaviour:
   type: 2
   FeaturedObject: {fileID: 0}
   resizePanel: {fileID: 1037124647}
+  sizeSlider: {fileID: 78574493}
 --- !u!1 &1646760428
 GameObject:
   m_ObjectHideFlags: 0
