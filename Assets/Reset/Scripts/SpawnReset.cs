@@ -23,6 +23,7 @@ public class SpawnReset : MonoBehaviour
     private string furnitureName = "furniture";
 
     public GameObject FeaturedObject;
+    public Vector3 oldScale;
 
     // private bool resizeMode = false;
 
@@ -42,6 +43,7 @@ public class SpawnReset : MonoBehaviour
     {
         if (resizePanel.activeSelf)
         {
+            Debug.Log("-----------------------------Enter activeself--------------------------");
             ResizeObject();
             return;
         }
@@ -50,25 +52,37 @@ public class SpawnReset : MonoBehaviour
         {
             return;
         }
+        Debug.Log("-----------------------------touched--------------------------");
         Touch touch = Input.GetTouch(0);
-        var ray = arCamera.ScreenPointToRay(touch.position);
+        Debug.Log("-----------------------------touched2--------------------------");
+        Ray ray = arCamera.ScreenPointToRay(touch.position);
+        Debug.Log("-----------------------------touched3--------------------------");
 
-        // RaycastHit hit;
-        // if (Physics.Raycast(ray, out hit))
-        // {
-        //     Debug.Log("-----------------------------Enter--------------------------");
-        //     FeaturedObject = hit.collider.gameObject;
-        //     Debug.Log("--------------FeaturedObject----------------");
-        //     Debug.Log(FeaturedObject.name);
-        //     Debug.Log("--------------FeaturedObject----------------");
-        //     resizePanel.SetActive(true);
-        //     return;
-        // }
-
-        if (raycastManager.Raycast(touch.position, hitResults, TrackableType.PlaneWithinBounds))
+        RaycastHit hit;
+        Debug.Log("-----------------------------ray0--------------------------");
+        if (Physics.Raycast(ray, out hit))
         {
             if (EventSystem.current.currentSelectedGameObject != null)
             {
+                Debug.Log("-----------------------------Enter !null--------------------------");
+                return;
+            }
+            Debug.Log("-----------------------------Enter--------------------------");
+            FeaturedObject = hit.collider.gameObject;
+            oldScale = FeaturedObject.transform.localScale;
+            Debug.Log("--------------FeaturedObject----------------");
+            Debug.Log(FeaturedObject.name);
+            Debug.Log("--------------FeaturedObject----------------");
+            resizePanel.SetActive(true);
+            return;
+        }
+
+        if (raycastManager.Raycast(touch.position, hitResults, TrackableType.PlaneWithinBounds))
+        {
+            Debug.Log("-----------------------------Enter raycast--------------------------");
+            if (EventSystem.current.currentSelectedGameObject != null)
+            {
+                Debug.Log("-----------------------------Enter !null--------------------------");
                 return;
             }
 
@@ -91,11 +105,12 @@ public class SpawnReset : MonoBehaviour
     {
         // var sizeSlider = GameObject.Find("SizeSlider");
         float scale = sizeSlider.value;
-        FeaturedObject.transform.localScale = new Vector3(scale, scale, scale);
+        FeaturedObject.transform.localScale = oldScale * scale;
     }
 
     public void EndResizeMode()
     {
+        sizeSlider.value = 1.0f;
         resizePanel.SetActive(false);
     }
 
