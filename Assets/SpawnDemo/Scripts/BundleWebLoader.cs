@@ -6,12 +6,12 @@ using UnityEngine.Networking;
 
 public class BundleWebLoader : MonoBehaviour
 {
-    private string bundleUrl = "http://192.168.10.178:8000/assetbundles/funiturebundle";
+    private string bundleUrl = "http://192.168.10.216:8000/assetbundles/funiturebundle";
     // private string assetName = "house_v4_prefab";
-    
+
 
     public IEnumerator GetBundle(Action<GameObject> callback, int id)
-    {   
+    {
         UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(bundleUrl);
 
         yield return www.SendWebRequest();
