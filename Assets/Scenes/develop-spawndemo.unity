@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98cc303c1a3644d79072a1034c8be80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 1693177364}
+  spawner: {fileID: 1693177371}
 --- !u!4 &853539293
 Transform:
   m_ObjectHideFlags: 0
@@ -247,8 +247,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853539291}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 435.40152, y: 378.5234, z: -9.615947}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1075.8008, y: 473.93808, z: -2658.1277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -264,11 +264,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 853539291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ec80dd8fe4b546e998a2416826fb40a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6704517097b1641dc8a35a30221d809e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleslider: {fileID: 826948597}
   featurer: {fileID: 1693177370}
-  sizeslider: {fileID: 826948597}
 --- !u!1001 &971594131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4989239701951110418, guid: 9f7591b91b93f48fcbda81143b546d08, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: ResetButton
       objectReference: {fileID: 0}
     - target: {fileID: 4989239701951110419, guid: 9f7591b91b93f48fcbda81143b546d08, type: 3}
       propertyPath: m_Pivot.x
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328738010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022980ecb5c3441fcaf6f1a47ea906ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d0008b0418b346888161123a461fdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resizePanel: {fileID: 654955466}
@@ -714,9 +714,9 @@ GameObject:
   - component: {fileID: 1693177367}
   - component: {fileID: 1693177366}
   - component: {fileID: 1693177365}
-  - component: {fileID: 1693177364}
   - component: {fileID: 1693177369}
   - component: {fileID: 1693177370}
+  - component: {fileID: 1693177371}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -724,20 +724,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1693177364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693177363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4031bd949dba341368757b952ada4b0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Testprefab: {fileID: 2588221790978984026, guid: 222566b9683c64ac6a6c90a129e67196, type: 3}
-  type: 2
 --- !u!114 &1693177365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,8 +805,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arCamera: {fileID: 1818692892}
+  scaleslider: {fileID: 826948597}
   resizePanel: {fileID: 654955466}
   FeaturedObject: {fileID: 0}
+--- !u!114 &1693177371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693177363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ca5f57a56c5485c9f86a06c942efa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Testprefab: {fileID: 2588221790978984026, guid: 222566b9683c64ac6a6c90a129e67196, type: 3}
+  type: 2
 --- !u!114 &1802864836 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2570604941421742314, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
@@ -1293,17 +1294,49 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6859673477013284390, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_Name
+      value: ScaleSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859673477013284391, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_MaxValue
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859673477013284391, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6859673477013284391, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 853539294}
+    - target: {fileID: 6859673477013284391, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnValueChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859673477013284391, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SliderScaleManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6859673477349154725, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1328738017}
+    - target: {fileID: 6859673477349154725, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPushDisablePanelButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859673477349154725, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DisablePanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859673477349154727, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_Name
+      value: DisablePanelButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6859673477386358296, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
       propertyPath: m_Name
-      value: ResizePanel
+      value: RescalePanel
       objectReference: {fileID: 0}
     - target: {fileID: 6859673477386358297, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
       propertyPath: m_Pivot.x

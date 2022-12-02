@@ -7,7 +7,7 @@ public class InputfieldSpawnManager : MonoBehaviour
 {
     //InputFieldを格納するための変数
     TMP_InputField inputField;
-    public Spawn spawner;
+    public SpawnObject spawner;
 
 
     // Start is called before the first frame update
@@ -21,10 +21,7 @@ public class InputfieldSpawnManager : MonoBehaviour
     //入力された名前情報を読み取ってコンソールに出力する関数
     public void SetText()
     {
-        //InputFieldからテキスト情報を取得する
         spawner.load_id_object(inputField.text);
-
-        //入力フォームのテキストを空にする
         inputField.text = "";
     }
 }
