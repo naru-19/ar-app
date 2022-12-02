@@ -17,8 +17,6 @@ public class InputfieldSpawnManager : MonoBehaviour
         inputField = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
     }
 
-
-    //入力された名前情報を読み取ってコンソールに出力する関数
     public void SetText()
     {
         spawner.load_id_object(inputField.text);
