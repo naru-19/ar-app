@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class Spawn : MonoBehaviour
+public class SpawnObject : MonoBehaviour
 {
     [SerializeField]
     GameObject Testprefab; // テスト用(白い家)
@@ -45,7 +45,7 @@ public class Spawn : MonoBehaviour
         if (raycastManager.Raycast(Input.GetTouch(0).position, hits, TrackableType.PlaneWithinPolygon))
         {
             var hitPose = hits[0].pose;
-            // 他にやることが無かったら
+            // FeaturingObjectが起動していなかったら
             if (EventSystem.current.currentSelectedGameObject == null)
             {
                 // prefabのダウンロードが失敗していたら
@@ -69,3 +69,4 @@ public class Spawn : MonoBehaviour
         }, id));
     }
 }
+

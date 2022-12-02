@@ -10,7 +10,10 @@ public class FeaturingObject : MonoBehaviour
 {
     [SerializeField]
     private Camera arCamera;
-    public GameObject resizePanel;
+    [SerializeField]
+    Slider scaleslider;
+    [SerializeField]
+    GameObject resizePanel;
     public GameObject FeaturedObject;
 
     // Start is called before the first frame update
@@ -38,11 +41,15 @@ public class FeaturingObject : MonoBehaviour
         bool success = Physics.Raycast(ray.origin, ray.direction * 100, out hit, Mathf.Infinity, layerMask);
         if (success)
         {
-            // 他にやることが無かったら
+            // Spawnが起動していなかったら
             if (EventSystem.current.currentSelectedGameObject == null)
             {
                 resizePanel.SetActive(true);
                 FeaturedObject = hit.collider.gameObject;
+                // obj.transform.localScaleだと参照できないけど受け渡すと出来るらしい
+                Vector3 scale = FeaturedObject.transform.localScale;
+                scaleslider.value = scale.x;
+                Debug.Log(scaleslider.value);
             }
         }
     }
