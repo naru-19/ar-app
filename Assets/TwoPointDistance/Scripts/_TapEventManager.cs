@@ -4,15 +4,25 @@ using UnityEngine;
 using System;
 
 // Depthも持つ必要がある。
-public class TapEventManager
+public class _TapEventManager
 {
     public float timeStamp;
     public Vector3 tapPosition;
-    public TapEventManager()
+    public float depth;
+    public _TapEventManager()
     {
         tapPosition = Input.mousePosition;
         DateTime now = DateTime.Now;
         timeStamp = ConvertDatetimeToFloat(now);
+        depth = 0f;
+    }
+    public _TapEventManager(float depth, Vector3 tapPosition)
+    {
+        DateTime now = DateTime.Now;
+        timeStamp = ConvertDatetimeToFloat(now);
+
+        tapPosition = tapPosition;
+        depth = depth;
     }
 
     public float ConvertDatetimeToFloat(DateTime datetime)
