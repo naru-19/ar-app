@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-public class PxPosition // デプスから点群に変換するための座標u,v
+public class PxPosition // 画像内座標u,v
 {
     public float u;
     public float v;
@@ -16,10 +16,21 @@ public class PxPosition // デプスから点群に変換するための座標u,
     }
 
 }
+
+public class TapEvent
+{
+    public Vector3 pos;
+    public int time;
+    public TapEvent(Vector3 _pos, int _time)
+    {
+        pos = _pos;
+        time = _time;
+    }
+}
+
 public class GetTwoPointDistance : MonoBehaviour
 {
     [SerializeField] private float interval = 500f; // milli sec
-    // Start is called before the first frame update
     [SerializeField] private RawImage subScreen;
     public ARCameraManager CameraManager
     {
@@ -29,7 +40,9 @@ public class GetTwoPointDistance : MonoBehaviour
     [SerializeField] private ARCameraManager _cameraManager;
 
 
-    private Vector2 scale;
+    private Vector2 scale; // texture/screenのh,wそれぞれ
+
+    private List<TapEvent> eventList = new List<TapEvent>();
 
     // Start is called before the first frame update
     void Start()
@@ -44,49 +57,71 @@ public class GetTwoPointDistance : MonoBehaviour
         var texture = subScreen.texture as Texture2D;
         if (Input.GetMouseButtonDown(0) && texture != null)
         {
-            float depthWidth = texture.height; // depthは縦横逆
+            // depthは縦横逆なため(subscreenのrotateの影響でtextureのwidthとheightは入れ替わっている)
+            float depthWidth = texture.height;
             float depthHeight = texture.width;
             Debug.Log($"depth W x H ={depthWidth} x {depthHeight}");
             scale = new Vector2(
-                (float)texture.height / Screen.currentResolution.width,
-                (float)texture.width / Screen.currentResolution.height
-            ); // subscreenのrotateの影響でtextureのwidthとheightは入れ替わっている。
+                (float)depthWidth / Screen.currentResolution.width,
+                (float)depthHeight / Screen.currentResolution.height
+            );
 
-            Debug.Log($"input position {Input.mousePosition}");
-            // デプスを点群にする際のu,v
-            // PxPosition pxPosition = new PxPosition(
-            //     (int)(Input.mousePosition.y * scale.x),
-            //     (int)((Screen.currentResolution.width - Input.mousePosition.x) * scale.y)
-            // // (Screen.currentResolution.height - Input.mousePosition.y)// * scale.y
-            // );
+            // depth画像内のtap位置をscaleを用いて取得
             PxPosition pxPosition = new PxPosition(
                 (int)Input.mousePosition.x * scale.x,
                 (int)((Screen.currentResolution.height - Input.mousePosition.y) * scale.y)
             );
+            // depthを取得
             float depth = texture.GetPixel(
                 (int)(Input.mousePosition.y * scale.y),
                 (int)((Screen.currentResolution.width - Input.mousePosition.x) * scale.x)
             ).r;
+            // カメラ座標系でのtap位置
             Vector3 point = Get3DpositionFromDepth(
-                depth, scale, pxPosition, intrinsics, depthHeight
+                depth, scale, pxPosition, intrinsics
             );
+            DateTime now = DateTime.Now;
 
-            // Debug.Log($"scale={scale.x * 100000}");
-            // Debug.Log($"surrent size {Screen.currentResolution}");
-            // Debug.Log($"(u,v)=({pxPosition.u},{pxPosition.v})");
-            // Debug.Log($"depth={depth}");
-            Debug.Log($"point={point}");
+            // tap時刻
+            // 日を跨いでtapすると正確なtap感覚を計算できない
+            int eventTime = now.Hour * 60 * 60 * 1000
+                + now.Minute * 60 * 1000 + now.Second * 1000
+                + now.Millisecond;
+            if (eventList.Count > 0)
+            {
+                // 前回のtapよりinterval[ms]経過していれば距離を計算
+                int prevEventTime = eventList[0].time;
+                if (eventTime - prevEventTime > interval)
+                {
+                    double distance = 0;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        distance += Math.Pow((eventList[0].pos[i] - point[i]), 2);
+                    }
+                    distance = Math.Pow(distance, 0.5);
+                    Debug.Log($"Two point distance is {distance * 100}[m]");
+                    eventList.Clear();
+                }
+            }
+            else
+            {
+                eventList.Add(
+                    new TapEvent(point, eventTime)
+                );
+            }
         }
     }
     public Vector3 Get3DpositionFromDepth(
-        float depth, Vector2 scale, PxPosition pxPosition, XRCameraIntrinsics intrinsics, float depthHeight
+        float depth, Vector2 scale, PxPosition pxPosition, XRCameraIntrinsics intrinsics
     )
     {
+        /*
+            depth,scale, 画像内の位置と内部パラメータをもとに3次元座標(カメラ座標)を取得
+        */
         float fx = intrinsics.focalLength.x * scale.x;
         float fy = intrinsics.focalLength.y * scale.y;
         float cx = intrinsics.principalPoint.x * scale.x;
         float cy = intrinsics.principalPoint.y * scale.y;
-        Debug.Log($"cx x cy = {cx} x {cy},fx x fy = {fx} x {fy}");
         return new Vector3(
             depth * (pxPosition.u - cx) / fx,
             depth * (pxPosition.v - cy) / fy,
