@@ -4,20 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ChangeAlpha : MonoBehaviour
 {
-    public Material targetMaterial;
-    public Slider alphaSlider;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField] private Material targetMaterial;
+    [SerializeField] private Slider alphaSlider;
     public void Change()
     {
         var color = new Color(1, 1, 1, alphaSlider.value);

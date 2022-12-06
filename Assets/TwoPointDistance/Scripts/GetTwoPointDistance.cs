@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.EventSystems;
+using TMPro;
+
 public class PxPosition // 画像内座標u,v
 {
     public float u;
@@ -38,24 +41,37 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
         set => _cameraManager = value;
     }
     [SerializeField] private ARCameraManager _cameraManager;
-
-
+    [SerializeField] private GameObject marker1;
+    [SerializeField] private GameObject marker2;
+    [SerializeField] private TextMeshProUGUI distanceText;
+    [SerializeField] private GameObject distanceTextObj;
     private Vector2 scale; // texture/screenのh,wそれぞれ
-
     private List<TapEvent> eventList = new List<TapEvent>();
-    // Update is called once per frame
+
+    void Start()
+    {
+        marker1.SetActive(false);
+        marker2.SetActive(false);
+        distanceText.text = "";
+    }
+
     void Update()
     {
-        if(base.measureMode)
+        if (base.measureMode)
         {
             CameraManager.TryGetIntrinsics(out XRCameraIntrinsics intrinsics);
             var texture = subScreen.texture as Texture2D;
             if (Input.GetMouseButtonDown(0) && texture != null)
             {
+                // 入力位置がボタンなら何もしない
+                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                {
+                    return;
+                }
+
                 // depthは縦横逆なため(subscreenのrotateの影響でtextureのwidthとheightは入れ替わっている)
                 float depthWidth = texture.height;
                 float depthHeight = texture.width;
-                Debug.Log($"depth W x H ={depthWidth} x {depthHeight}");
                 scale = new Vector2(
                     (float)depthWidth / Screen.currentResolution.width,
                     (float)depthHeight / Screen.currentResolution.height
@@ -95,19 +111,34 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
                         }
                         distance = Math.Pow(distance, 0.5);
                         Debug.Log($"Two point distance is {distance * 100}[m]");
+                        SetMaker(Input.mousePosition, marker2);
+                        ShowDistance(distance);
                         eventList.Clear();
                     }
                 }
                 else
                 {
+                    // 初期化処理
+                    marker1.SetActive(false);
+                    marker2.SetActive(false);
+
                     eventList.Add(
                         new TapEvent(point, eventTime)
                     );
+                    distanceText.text = "";
+                    SetMaker(Input.mousePosition, marker1);
+
                 }
             }
         }
+        else
+        {
+            marker1.SetActive(false);
+            marker2.SetActive(false);
+            distanceText.text = "";
+        }
     }
-    public Vector3 Get3DpositionFromDepth(
+    private Vector3 Get3DpositionFromDepth(
         float depth, Vector2 scale, PxPosition pxPosition, XRCameraIntrinsics intrinsics
     )
     {
@@ -124,5 +155,22 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
             depth
         );
 
+    }
+    private void SetMaker(Vector2 tapPosition, GameObject marker)
+    {
+        marker.SetActive(true);
+        marker.transform.position = new Vector3(tapPosition.x, tapPosition.y, marker.transform.position.z);
+    }
+
+    private void ShowDistance(double distance)
+    {
+        distance *= 100;
+        string text = distance.ToString("f1");
+        distanceTextObj.transform.position = new Vector3(
+            (marker1.transform.position.x + marker2.transform.position.x) / 2,
+            (marker1.transform.position.y + marker2.transform.position.y) / 2,
+            (marker1.transform.position.z + marker2.transform.position.z) / 2
+        );
+        distanceText.text = $"{text}[cm]";
     }
 }

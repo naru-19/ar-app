@@ -71,17 +71,6 @@ public class RenderDepthImage : MonoBehaviour
 
         // Perform the conversion.
         cpuImage.Convert(conversionParams, rawTextureData);
-        // Color[] rawPixelvalue = texture.GetPixels();
-
-        // for (int px = 0; px < 100 * 100; px++)
-        // {
-        //     float r = rawPixelvalue[px].r;
-        //     rawPixelvalue[px] = new Color(0, 0, 0);
-        // }
-        // texture.SetPixels(rawPixelvalue);
-        // "Apply" the new pixel data to the Texture2D.
         texture.Apply();
-
-        // Debug.Log($"{pixels.Length}x{pixels[0]}");
     }
 }
