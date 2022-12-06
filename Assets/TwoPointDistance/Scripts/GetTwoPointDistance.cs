@@ -8,11 +8,12 @@ using UnityEngine.XR.ARSubsystems;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class PxPosition // 画像内座標u,v
+// 画像内座標u,v
+public class PixelPosition 
 {
     public float u;
     public float v;
-    public PxPosition(float _u, float _v)
+    public PixelPosition(float _u, float _v)
     {
         u = _u;
         v = _v;
@@ -78,7 +79,7 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
                 );
 
                 // depth画像内のtap位置をscaleを用いて取得
-                PxPosition pxPosition = new PxPosition(
+                PixelPosition pxPosition = new PixelPosition(
                     (int)Input.mousePosition.x * scale.x,
                     (int)((Screen.currentResolution.height - Input.mousePosition.y) * scale.y)
                 );
@@ -94,7 +95,7 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
                 DateTime now = DateTime.Now;
 
                 // tap時刻
-                // 日を跨いでtapすると正確なtap感覚を計算できない
+                // 日を跨いでtapすると正確なtap間隔を計算できない
                 int eventTime = now.Hour * 60 * 60 * 1000
                     + now.Minute * 60 * 1000 + now.Second * 1000
                     + now.Millisecond;
@@ -110,7 +111,7 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
                             distance += Math.Pow((eventList[0].pos[i] - point[i]), 2);
                         }
                         distance = Math.Pow(distance, 0.5);
-                        Debug.Log($"Two point distance is {distance * 100}[m]");
+                        Debug.Log($"Two point distance is {distance * 100}[cm]");
                         SetMaker(Input.mousePosition, marker2);
                         ShowDistance(distance);
                         eventList.Clear();
@@ -139,7 +140,7 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
         }
     }
     private Vector3 Get3DpositionFromDepth(
-        float depth, Vector2 scale, PxPosition pxPosition, XRCameraIntrinsics intrinsics
+        float depth, Vector2 scale, PixelPosition pxPosition, XRCameraIntrinsics intrinsics
     )
     {
         /*
