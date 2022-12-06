@@ -8,7 +8,6 @@ public class ChangeSubScreenSize : MonoBehaviour
 
     [SerializeField] RawImage subScreen;
     [SerializeField] Slider sizeSlider;
-    public bool rotateScreen;
     private float screenHeight; // main screen height
     private float screenWidth; // main screen width
 
@@ -22,17 +21,8 @@ public class ChangeSubScreenSize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rotateScreen)
-        {
-            subScreen.rectTransform.sizeDelta = new Vector2(
-                screenHeight * sizeSlider.value, screenWidth * sizeSlider.value
-            );
-        }
-        else
-        {
-            subScreen.rectTransform.sizeDelta = new Vector2(
-                screenWidth * sizeSlider.value, screenHeight * sizeSlider.value
-            );
-        }
+        subScreen.rectTransform.sizeDelta = new Vector2(
+            screenHeight * sizeSlider.value, screenWidth * sizeSlider.value
+        );
     }
 }
