@@ -24,8 +24,8 @@ public class PixelPosition
 public class TapEvent
 {
     public Vector3 pos;
-    public int time;
-    public TapEvent(Vector3 _pos, int _time)
+    public float time;
+    public TapEvent(Vector3 _pos, float _time)
     {
         pos = _pos;
         time = _time;
@@ -34,7 +34,7 @@ public class TapEvent
 
 public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセスしたいため、継承 */
 {
-    [SerializeField] private float interval = 500f; // milli sec
+    [SerializeField] private float interval = 0.2f; // milli sec
     [SerializeField] private RawImage subScreen;
     public ARCameraManager CameraManager
     {
@@ -96,13 +96,11 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
 
                 // tap時刻
                 // 日を跨いでtapすると正確なtap間隔を計算できない
-                int eventTime = now.Hour * 60 * 60 * 1000
-                    + now.Minute * 60 * 1000 + now.Second * 1000
-                    + now.Millisecond;
+                float eventTime = Time.time;
                 if (eventList.Count > 0)
                 {
                     // 前回のtapよりinterval[ms]経過していれば距離を計算
-                    int prevEventTime = eventList[0].time;
+                    float prevEventTime = eventList[0].time;
                     if (eventTime - prevEventTime > interval)
                     {
                         double distance = 0;
