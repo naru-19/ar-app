@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ChangeAlpha : MonoBehaviour
 {
-    public Material target_material;
+    public Material targetMaterial;
     public Slider alphaSlider;
-    private float alpha;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +21,6 @@ public class ChangeAlpha : MonoBehaviour
     public void Change()
     {
         var color = new Color(1, 1, 1, alphaSlider.value);
-        target_material.SetColor("_Color", color);
+        targetMaterial.SetColor("_Color", color);
     }
 }
