@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/dev-TwoPointDistance.unity
     guid: f21c38a9d86254d718b8114882ba2d6d
   - enabled: 1
@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/develop-reset.unity
     guid: 52748f9d539ec434ca9a2668b3ea3e51
+  - enabled: 0
+    path: Assets/Scenes/develop-spawndemotommy.unity
+    guid: 2d3d38d4243bc5f46a1f5f59c6190a32
   m_configObjects:
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: eb8789a26a4a44e1abe35db959547bd4, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e7a469aa3671f425ebcb3aac245334fc, type: 2}
