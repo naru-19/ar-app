@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/develop-spawndemo.unity
     guid: ad22c397f5cae43328414c034f262c34
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/develop-camera-spawn.unity
     guid: ef77b7cf5a5af419087a6e5c40113d21
   - enabled: 0
