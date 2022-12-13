@@ -29,6 +29,7 @@ public class MoveScene : MonoBehaviour
     {
         Debug.Log("start wait");
         yield return new WaitForSeconds(seconds);
+        action?.Invoke();
         Debug.Log("finish wait");
     }
 }
