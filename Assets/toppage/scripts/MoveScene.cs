@@ -8,6 +8,12 @@ public class MoveScene : MonoBehaviour
     public void OnClickStart()
     {
         Debug.Log("押された!");
+        StartCoroutine(DelayMoving());
         SceneManager.LoadScene("develop-reset");
+    }
+
+    private IEnumerator DelayMoving()
+    {
+        yield return new WaitForSeconds(2);
     }
 }
