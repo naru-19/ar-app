@@ -16,15 +16,6 @@ public class MoveScene : MonoBehaviour
         }));
     }
 
-    public void OnClickMaker() //3Dモデル作成modeへの遷移
-    {
-        Debug.Log("3Dモデル作成が押された!");
-        StartCoroutine(DelayMoving(1, () =>
-        {
-            SceneManager.LoadScene(0);
-        }));
-    }
-
     private IEnumerator DelayMoving(float seconds, Action action)
     {
         Debug.Log("start wait");
