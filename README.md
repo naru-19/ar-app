@@ -20,14 +20,7 @@
 
 ### coding ルール
 
-コードフォーマットは Omnisharp を使う.
-
-| 変数例          | 意味                         |
-| --------------- | ---------------------------- |
-| CameraSwitcher  | class を表す                 |
-| camera_state    | 普通の変数だけど，長いやつ． |
-| GLOVAL_VARIABLE | グローバル変数は全部大文字   |
-| isCamera        | bool 値                      |
+コードフォーマットは Omnisharp を使う.命名規則はファイル名、関数名等はUnityのサンプルコードに従う。
 
 ## 各種バージョン
 
@@ -50,7 +43,7 @@ python3 -m http.server 8000 --bind ip # ip：自分の使用している機材�
 
 ## TODO
 
-- [ ] all in one な Docker image の作成
+- ~~[ ] all in one な Docker image の作成~~
   - [ ] python のバージョン
-  - [ ] ライブラリのバージョン(特に open3D,formatter は version で挙動が違う)
-- [ ] unity install (全員?)
+  - [ ] ~~ライブラリのバージョン(特に open3D,formatter は version で挙動が違う)~~
+- [x] unity install (全員?)
