@@ -17,7 +17,7 @@ public class DeleteButton : MonoBehaviour
 
     public void OnPushDeleteButton()
     {
-        Destroy(featurer);
+        Destroy(featurer.FeaturedObject);
         resizePanel.SetActive(false);
     }
 }
