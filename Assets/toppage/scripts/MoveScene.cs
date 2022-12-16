@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MoveScene : MonoBehaviour
 {
-    public void OnClickStart() //ARmodeへの遷移
+    public SceneObject m_nextScene;
+    public void OnClick() //ARmodeへの遷移
     {
-        Debug.Log("AR modeが押された!");
+        Debug.Log(m_nextScene + "への遷移ボタンが押された!");
         StartCoroutine(DelayMoving(1, () =>
         {
             // delay後の処理 ()内のシーンに遷移
-            SceneManager.LoadScene("develop-reset");
+            SceneManager.LoadScene(m_nextScene);
         }));
     }
 
