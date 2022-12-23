@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18025592, g: 0.22567038, b: 0.3068796, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -220,7 +220,6 @@ GameObject:
   - component: {fileID: 853539293}
   - component: {fileID: 853539292}
   - component: {fileID: 853539294}
-  - component: {fileID: 853539295}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -269,20 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleslider: {fileID: 826948597}
-  featurer: {fileID: 1693177370}
---- !u!114 &853539295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853539291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b44305a47a54e8448573e3e93a42760, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resizePanel: {fileID: 654955466}
   featurer: {fileID: 1693177370}
 --- !u!1001 &971594131
 PrefabInstance:
@@ -699,7 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resizePanel: {fileID: 654955466}
-  featurer: {fileID: 0}
+  featurer: {fileID: 1693177370}
 --- !u!1 &1409875976
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,6 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Testprefab: {fileID: 2588221790978984026, guid: 222566b9683c64ac6a6c90a129e67196, type: 3}
+  arCamera: {fileID: 1818692892}
   type: 2
 --- !u!114 &1802864836 stripped
 MonoBehaviour:
@@ -1155,8 +1141,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989098561}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
+  m_LocalPosition: {x: 0, y: 0, z: 6.6}
+  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1085448184}
@@ -1165,8 +1151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44, y: -32}
-  m_SizeDelta: {x: 120, y: 30}
+  m_AnchoredPosition: {x: 44, y: -21.1}
+  m_SizeDelta: {x: 120, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989098563
 MonoBehaviour:
@@ -1592,6 +1578,14 @@ PrefabInstance:
     - target: {fileID: 6859673476820392814, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859673477013284388, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859673477013284388, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.2
       objectReference: {fileID: 0}
     - target: {fileID: 6859673477013284390, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
       propertyPath: m_Name
