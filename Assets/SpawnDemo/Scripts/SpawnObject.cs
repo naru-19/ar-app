@@ -48,9 +48,8 @@ public class SpawnObject : MonoBehaviour
         Touch touch = Input.GetTouch(0);
         Ray ray = arCamera.ScreenPointToRay(touch.position);
         RaycastHit hit;
-        int layerMask = 1 << 8;
-        bool success = Physics.Raycast(ray.origin, ray.direction * 100, out hit, Mathf.Infinity, layerMask);
-        if (success) // もしタップ先がオブジェクトだったなら、配置しないで返す
+        int layerMask = 1 << 8; // 衝突するlayerを指定する変数．https://kan-kikuchi.hatenablog.com/entry/RayCast2
+        if (Physics.Raycast(ray.origin, ray.direction * 100, out hit, Mathf.Infinity, layerMask)) // もしタップ先がオブジェクトだったなら、配置しないで返す
         {
             return;
         }
@@ -62,9 +61,10 @@ public class SpawnObject : MonoBehaviour
             // FeaturingObjectが起動していなかったら
             if (EventSystem.current.currentSelectedGameObject == null)
             {
-                // prefabのダウンロードが失敗していたら
+                // // prefabのダウンロードが失敗していたら例外Logを出力
                 // if (objectPrefab == null)
                 // {
+                //     Debug.Log("------------------------[Exception] Failed to download prefab-----------------------");
                 //     return;
                 // }
                 // Instantiate(objectPrefab, hitPose.position, hitPose.rotation);
