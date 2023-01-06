@@ -61,14 +61,14 @@ public class SpawnObject : MonoBehaviour
             // FeaturingObjectが起動していなかったら
             if (EventSystem.current.currentSelectedGameObject == null)
             {
-                // // prefabのダウンロードが失敗していたら例外Logを出力
-                // if (objectPrefab == null)
-                // {
-                //     Debug.Log("------------------------[Exception] Failed to download prefab-----------------------");
-                //     return;
-                // }
-                // Instantiate(objectPrefab, hitPose.position, hitPose.rotation);
-                Instantiate(Testprefab, hitPose.position, hitPose.rotation); // 僕のスマホではダウンロードがうまくいかないので、一旦既存のオブジェクトを使ってます
+                // prefabのダウンロードが失敗していたら例外Logを出力
+                if (objectPrefab == null)
+                {
+                    Debug.Log("------------------------[Exception] Failed to download prefab-----------------------");
+                    return;
+                }
+                Instantiate(objectPrefab, hitPose.position, hitPose.rotation);
+                // Instantiate(Testprefab, hitPose.position, hitPose.rotation); // 僕のスマホではダウンロードがうまくいかないので、一旦既存のオブジェクトを使ってます
             }
         }
     }
