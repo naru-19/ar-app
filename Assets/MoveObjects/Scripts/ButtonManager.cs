@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class FrontButton : MonoBehaviour
+public class ButtonManager : MonoBehaviour
 {
+    public bool buttonFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +20,13 @@ public class FrontButton : MonoBehaviour
     }
 
     // 押されたとき
-    void OnTap()
+    public void OnTap()
     {
-        //GameObject obj = GetComponent<TapObjGetter>.GetTapObject(); // オブジェクト選択
-        //obj.transform.Translate(0, 0, -0.1f);
+        buttonFlag = true;
     }
 
+    public void ChangeFlag()
+    {
+        buttonFlag = false;
+    }
 }

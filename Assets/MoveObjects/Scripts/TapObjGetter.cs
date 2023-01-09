@@ -7,12 +7,19 @@ using UnityEngine.EventSystems;
 public class TapObjGetter : MonoBehaviour
 {
 
-    GameObject tapedObject;
+    [SerializeField]
+    private Camera arCamera;
+    [SerializeField]
+    GameObject EscButton;
+    GameObject tappedObject;
+    EventSystem eventSystem;
+    public ButtonManager buttonManager;
+    public MoveObject moveObject;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        EscButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,6 +32,54 @@ public class TapObjGetter : MonoBehaviour
         }
         Touch touch = Input.GetTouch(0);
         */
+
+        if (Input.touchCount == 0)
+        {
+            return;
+        }
+        else if (Input.touchCount == 1)
+        {
+            // tapされたobjが無ければtapして獲得
+            if (tappedObject == null)
+            {
+                //Touch touch = Input.GetTouch(0);
+
+                Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
+                //touch.position
+                RaycastHit hit;
+
+                bool taped = Physics.Raycast(ray.origin, ray.direction * 100, out hit, Mathf.Infinity);
+
+                if (taped)
+                {
+                    tappedObject = hit.collider.gameObject;
+                    EscButton.SetActive(true);
+                }
+            }
+            //when esc button is taped -> tappedObject = null
+            else if (buttonManager.buttonFlag)
+            {
+                buttonManager.ChangeFlag();
+                tappedObject = null;
+                EscButton.SetActive(false);
+            }
+            else
+            {
+                Touch touch = Input.GetTouch(0);
+                moveObject.MoveObj(tappedObject, touch);
+            }
+        }
+        else if (Input.touchCount == 2)
+        {
+            // resize?
+            return;
+        }
+        else
+        {
+            return;
+        }
+
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             tapedObject = null;
@@ -42,6 +97,7 @@ public class TapObjGetter : MonoBehaviour
             }
 
         }
+        */
 
     }
 
