@@ -54,6 +54,7 @@ public class TapObjGetter : MonoBehaviour
                 {
                     tappedObject = hit.collider.gameObject;
                     EscButton.SetActive(true);
+                    Debug.Log(tappedObject.transform.position);
                 }
             }
             //when esc button is taped -> tappedObject = null
@@ -66,7 +67,9 @@ public class TapObjGetter : MonoBehaviour
             else
             {
                 Touch touch = Input.GetTouch(0);
-                moveObject.MoveObj(tappedObject, touch);
+                Debug.Log(tappedObject.transform.position);
+                //Debug.Log(touch);
+                moveObject.MoveObj(tappedObject);
             }
         }
         else if (Input.touchCount == 2)
