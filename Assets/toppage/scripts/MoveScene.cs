@@ -9,15 +9,25 @@ public class MoveScene : MonoBehaviour
     public SceneObject m_nextScene;
     public void OnClick() //シーンの遷移
     {
-        Debug.Log(m_nextScene + "への遷移ボタンが押された!");
-        StartCoroutine(DelayMoving(1, () =>
+        Delay Delay = new Delay(1, () =>
         {
-            // delay後の， ()内のシーンに遷移
+            // delay後， ()内のシーンに遷移
             SceneManager.LoadScene(m_nextScene);
-        }));
+        });
+        Debug.Log(m_nextScene + "への遷移ボタンが押された!");
+        StartCoroutine(Delay.DelayMoving(Delay.seconds, Delay.action));
     }
+}
 
-    private IEnumerator DelayMoving(float seconds, Action action)
+public class Delay
+{
+    public float seconds;
+    public Action action;
+    public Delay(float _seconds, Action _action){
+        seconds = _seconds;
+        action = _action;
+    }
+    public IEnumerator DelayMoving(float seconds, Action action)
     {
         Debug.Log("start wait");
         yield return new WaitForSeconds(seconds);
