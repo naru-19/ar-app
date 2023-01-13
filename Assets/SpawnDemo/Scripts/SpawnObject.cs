@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class SpawnObject : MonoBehaviour
+// public class SpawnObject : MonoBehaviour
+public class SpawnObject : MeasureModeSwitcher
 {
     [SerializeField]
     GameObject Testprefab; // テスト用(白い家)
@@ -44,6 +45,11 @@ public class SpawnObject : MonoBehaviour
             return;
         }
 
+        if (base.measureMode)
+        {
+            return;
+        }
+
         // ここからオブジェクト選択と配置が同時に起こらないようにするための部分（FeaturingObject.csと実装は同じ）
         Touch touch = Input.GetTouch(0);
         Ray ray = arCamera.ScreenPointToRay(touch.position);
@@ -62,6 +68,7 @@ public class SpawnObject : MonoBehaviour
             if (EventSystem.current.currentSelectedGameObject == null)
             {
                 // prefabのダウンロードが失敗していたら例外Logを出力
+                Instantiate(Testprefab, hitPose.position, hitPose.rotation); // 僕のスマホではダウンロードがうまくいかないので、一旦既存のオブジェクトを使ってます
                 if (objectPrefab == null)
                 {
                     Debug.Log("------------------------[Exception] Failed to download prefab-----------------------");

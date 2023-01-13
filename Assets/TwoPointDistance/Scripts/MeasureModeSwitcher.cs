@@ -12,11 +12,12 @@ public class MeasureModeSwitcher : MonoBehaviour
         measureMode = !measureMode;
         if (measureMode)
         {
-            modeText.text = "Measure mode off";
+            modeText.text = "OFF";
+
         }
         else
         {
-            modeText.text = "Measure mode on";
+            modeText.text = "ON";
         }
     }
 

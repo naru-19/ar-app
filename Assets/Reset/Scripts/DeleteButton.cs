@@ -19,6 +19,11 @@ public class DeleteButton : MonoBehaviour
     {
         Debug.Log("----------------Delete button pushed--------------");
         Destroy(featurer.FeaturedObject);
-        resizePanel.SetActive(false);
+        Delay Delay = new Delay(1, () =>
+        {
+            // delay後， Panelの非表示
+            resizePanel.SetActive(false);
+        });
+        StartCoroutine(Delay.DelayMoving(Delay.seconds, Delay.action));
     }
 }
