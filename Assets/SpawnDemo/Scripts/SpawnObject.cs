@@ -49,12 +49,12 @@ public class SpawnObject : MonoBehaviour
             if (EventSystem.current.currentSelectedGameObject == null)
             {
                 // prefabのダウンロードが失敗していたら
-                if (objectPrefab == null)
-                {
-                    return;
-                }
-                Instantiate(objectPrefab, hitPose.position, hitPose.rotation);
-                // Instantiate(Testprefab, hitPose.position, hitPose.rotation);
+                // if (objectPrefab == null)
+                // {
+                //     return;
+                // }
+                // Instantiate(objectPrefab, hitPose.position, hitPose.rotation);
+                Instantiate(Testprefab, hitPose.position, hitPose.rotation);
             }
         }
     }
