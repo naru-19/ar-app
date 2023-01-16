@@ -16,11 +16,7 @@ public class DisablePanel : MonoBehaviour
     // Update is called once per frame
     public void OnPushDisablePanelButton()
     {
-        Delay Delay = new Delay(1, () =>
-        {
-            // delay後， パネルの非表示
-            resizePanel.SetActive(false);
-        });
-        StartCoroutine(Delay.DelayMoving(Delay.seconds, Delay.action));
+        //パネルの非表示
+        resizePanel.SetActive(false);
     }
 }
