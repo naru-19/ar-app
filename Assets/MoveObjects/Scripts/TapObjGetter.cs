@@ -36,7 +36,10 @@ public class TapObjGetter : MonoBehaviour
         if (taped)
         {
             tappedObject = hit.collider.gameObject;
-            buttonManager.tappedObject = this.tappedObject;
+            if (tappedObject != null)
+            {
+                buttonManager.tappedObject = this.tappedObject;
+            }
         }
 
     }
