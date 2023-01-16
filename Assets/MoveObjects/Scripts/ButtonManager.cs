@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    public bool buttonFlag = false;
+    public GameObject tappedObject;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +20,28 @@ public class ButtonManager : MonoBehaviour
     }
 
     // 押されたとき
-    public void OnTap()
+    public void OnTapRight()
     {
-        buttonFlag = true;
+        tappedObject.transform.Translate(1f, 0, 0);
     }
 
-    public void ChangeFlag()
+    public void OnTapLeft()
     {
-        buttonFlag = false;
+        tappedObject.transform.Translate(-1f, 0, 0);
+    }
+
+    public void OnTapFront()
+    {
+        tappedObject.transform.Translate(0, 0, -1f);
+    }
+
+    public void OnTapBack()
+    {
+        tappedObject.transform.Translate(0, 0, 1f);
+    }
+
+    public void OnTapRotate()
+    {
+        tappedObject.transform.Rotate(new Vector(0, 90, 0));
     }
 }
