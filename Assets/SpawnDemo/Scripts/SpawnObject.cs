@@ -45,8 +45,11 @@ public class SpawnObject : MeasureModeSwitcher
             return;
         }
 
+        Debug.Log("in sp");
+        Debug.Log(base.measureMode);
         if (base.measureMode)
         {
+            Debug.Log("measureMode now!");
             return;
         }
 

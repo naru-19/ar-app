@@ -58,6 +58,8 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
 
     void Update()
     {
+        Debug.Log("in GTPD");
+        Debug.Log(base.measureMode);
         if (base.measureMode)
         {
             CameraManager.TryGetIntrinsics(out XRCameraIntrinsics intrinsics);
