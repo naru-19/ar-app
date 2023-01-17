@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 // 画像内座標u,v
-public class PixelPosition 
+public class PixelPosition
 {
     public float u;
     public float v;
@@ -58,8 +58,6 @@ public class GetTwoPointDistance : MeasureModeSwitcher/* measureModeにアクセ
 
     void Update()
     {
-        Debug.Log("in GTPD");
-        Debug.Log(base.measureMode);
         if (base.measureMode)
         {
             CameraManager.TryGetIntrinsics(out XRCameraIntrinsics intrinsics);
