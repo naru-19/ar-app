@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/dev-TwoPointDistance.unity
     guid: f21c38a9d86254d718b8114882ba2d6d
   - enabled: 0
@@ -17,6 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/develop-reset.unity
     guid: 52748f9d539ec434ca9a2668b3ea3e51
+
   - enabled: 0
     path: Assets/Scenes/develop-spawndemotommy.unity
     guid: 2d3d38d4243bc5f46a1f5f59c6190a32
