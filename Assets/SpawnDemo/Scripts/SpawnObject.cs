@@ -39,17 +39,14 @@ public class SpawnObject : MeasureModeSwitcher
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.touchCount == 0 || Input.GetTouch(0).phase != TouchPhase.Ended)
-        {
-            return;
-        }
-
-        Debug.Log("in sp");
-        Debug.Log(base.measureMode);
         if (base.measureMode)
         {
             Debug.Log("measureMode now!");
+            return;
+        }
+
+        if (Input.touchCount == 0 || Input.GetTouch(0).phase != TouchPhase.Ended)
+        {
             return;
         }
 

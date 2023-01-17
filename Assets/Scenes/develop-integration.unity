@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18025592, g: 0.22567038, b: 0.3068796, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2822,8 +2822,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca5f57a56c5485c9f86a06c942efa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modeText: {fileID: 0}
-  modeButton: {fileID: 0}
+  modeText: {fileID: 1932695590}
+  modeButton: {fileID: 2106419745}
   Testprefab: {fileID: 2588221790978984026, guid: 222566b9683c64ac6a6c90a129e67196, type: 3}
   arCamera: {fileID: 845649908}
   type: 2
@@ -3682,16 +3682,44 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 528354620}
+    - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1132764616}
+    - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: pushModeSwitcher
       objectReference: {fileID: 0}
     - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: pushModeSwitcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MeasureModeSwitcher, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MeasureModeSwitcher, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570604941127802868, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2570604941127802869, guid: 0abf1fd02be4042d3b1dd9402cf47ca0, type: 3}
       propertyPath: m_Color.b
