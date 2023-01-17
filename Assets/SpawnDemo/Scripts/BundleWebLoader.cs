@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class BundleWebLoader : MonoBehaviour
 {
-    private string bundleUrl = "http://192.168.10.216:8000/assetbundles/funiturebundle";
+    private string bundleUrl = "http://192.168.10.185:8000/assetbundles/funiturebundle";
     // private string assetName = "house_v4_prefab";
 
 
