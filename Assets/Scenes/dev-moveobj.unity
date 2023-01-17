@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane_preview_button_text: {fileID: 1315284572}
+  plane_preview_button: {fileID: 0}
   planedetector: {fileID: 231826775}
 --- !u!114 &72762959
 MonoBehaviour:
@@ -365,7 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca5f57a56c5485c9f86a06c942efa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modeText: {fileID: 0}
+  modeButton: {fileID: 0}
   Testprefab: {fileID: 2588221790978984026, guid: 222566b9683c64ac6a6c90a129e67196, type: 3}
+  arCamera: {fileID: 0}
   type: 2
 --- !u!114 &231826774
 MonoBehaviour:
@@ -379,6 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407e4428464104b68b9a89b7f37fa7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modeText: {fileID: 0}
+  modeButton: {fileID: 0}
   arCamera: {fileID: 718811242}
   scaleslider: {fileID: 1646513027}
   resizePanel: {fileID: 1646513025}
@@ -1261,6 +1267,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 72762955}
     m_Modifications:
+    - target: {fileID: 4540409179620060856, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6859673476809028449, guid: 4509775dc2ffb40e8af34fe3de9a47b5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2046,6 +2056,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1646513026}
     m_Modifications:
+    - target: {fileID: 7546388027888267304, guid: fb3847842f09246a5a521b05f7062022, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d771cc8c8aabf40a58e62c4ea75ae7fe, type: 3}
     - target: {fileID: 7546388027888267305, guid: fb3847842f09246a5a521b05f7062022, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

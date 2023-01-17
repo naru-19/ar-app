@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class FeaturingObject : MonoBehaviour
+public class FeaturingObject : MeasureModeSwitcher
 {
     [SerializeField]
     private Camera arCamera;
@@ -15,7 +15,7 @@ public class FeaturingObject : MonoBehaviour
     [SerializeField]
     GameObject resizePanel;
     public GameObject FeaturedObject;
-
+    private Vector2 localPoint = Vector2.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,15 +25,27 @@ public class FeaturingObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (resizePanel.activeSelf)
-        {
-            return;
-        }
+        // if (resizePanel.activeSelf)
+        // {
+        //     return;
+        // }
         if (Input.touchCount == 0 || Input.GetTouch(0).phase != TouchPhase.Ended)
         {
             return;
         }
+        if (base.measureMode)
+        {
+            return;
+        }
         Touch touch = Input.GetTouch(0);
+        RectTransform rc = resizePanel.GetComponent<RectTransform>();
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                rc, touch.position, null, out localPoint);
+        if (rc.rect.xMin < localPoint.x && localPoint.x < rc.rect.xMax
+                && rc.rect.yMin < localPoint.y && localPoint.y < rc.rect.yMax)
+        {
+            return;
+        }
         Ray ray = arCamera.ScreenPointToRay(touch.position);
         RaycastHit hit;
         // https://dreameaters5239.hatenablog.com/entry/2020/05/07/205415 消してもうまくいくかも

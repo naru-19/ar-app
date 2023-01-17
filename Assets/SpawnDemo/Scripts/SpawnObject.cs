@@ -18,6 +18,8 @@ public class SpawnObject : MeasureModeSwitcher
     private Camera arCamera;
 
     GameObject objectPrefab;
+    public GameObject resizePanel;
+    private Vector2 localPoint = Vector2.zero;
 
     private void Awake()
     {
@@ -52,6 +54,14 @@ public class SpawnObject : MeasureModeSwitcher
 
         // ここからオブジェクト選択と配置が同時に起こらないようにするための部分（FeaturingObject.csと実装は同じ）
         Touch touch = Input.GetTouch(0);
+        RectTransform rc = resizePanel.GetComponent<RectTransform>();
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                rc, touch.position, null, out localPoint);
+        if (rc.rect.xMin < localPoint.x && localPoint.x < rc.rect.xMax
+                && rc.rect.yMin < localPoint.y && localPoint.y < rc.rect.yMax)
+        {
+            return;
+        }
         Ray ray = arCamera.ScreenPointToRay(touch.position);
         RaycastHit hit;
         int layerMask = 1 << 8; // 衝突するlayerを指定する変数．https://kan-kikuchi.hatenablog.com/entry/RayCast2
@@ -68,9 +78,10 @@ public class SpawnObject : MeasureModeSwitcher
             if (EventSystem.current.currentSelectedGameObject == null)
             {
                 // prefabのダウンロードが失敗していたら例外Logを出力
-                Instantiate(Testprefab, hitPose.position, hitPose.rotation); // 僕のスマホではダウンロードがうまくいかないので、一旦既存のオブジェクトを使ってます
+
                 if (objectPrefab == null)
                 {
+                    Instantiate(Testprefab, hitPose.position, hitPose.rotation); // 僕のスマホではダウンロードがうまくいかないので、一旦既存のオブジェクトを使ってます
                     Debug.Log("------------------------[Exception] Failed to download prefab-----------------------");
                     return;
                 }
